@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormManagerService } from '../form-manager.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app-step1',
@@ -7,9 +9,16 @@ import { Router } from '@angular/router';
     styleUrls: ['./step1.component.scss'],
 })
 export class Step1Component implements OnInit {
-    constructor(private router: Router) {}
+    userData: FormGroup;
+    constructor(private router: Router, private formManagerService: FormManagerService) {
+        this.userData = this.formManagerService.getForm().get('userData') as FormGroup;
+    }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.userData.valueChanges.subscribe((val) => {
+            console.log(val);
+        });
+    }
 
     goNext() {
         this.router.navigate(['step2']);

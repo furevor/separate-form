@@ -1,12 +1,12 @@
 <p>Заполните шаг №1</p>
-<form>
+<form [formGroup]="userData">
   <div class="form-group">
     <label for="name">Введите имя</label>
-    <input type="text" class="form-control" id="name">
+    <input type="text" class="form-control" id="name" formControlName="name">
   </div>
   <div class="form-group">
     <label for="second-name">Введите фамилию</label>
-    <input type="text" class="form-control" id="second-name">
+    <input type="text" class="form-control" id="second-name" formControlName="secondName">
   </div>
 </form>
 <div class="navigation-buttons">
